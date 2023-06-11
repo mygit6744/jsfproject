@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+      <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+      <navigation-rule>
+    <from-view-id>/booksList.xhtml</from-view-id>
+    <navigation-case>
+        <from-outcome>addBook</from-outcome>
+        <to-view-id>/addBook.xhtml</to-view-id>
+        <redirect>
+          <!--   <view-param>
+                <name>bookid</name>
+                <value>#{bookTable.bookid}</value>
+            </view-param> -->
+        </redirect>
+    </navigation-case>
+</navigation-rule>
+
+</faces-config>

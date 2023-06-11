@@ -1,0 +1,53 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+      <title>JSF Tutorial!</title>
+      <h:outputStylesheet library = "css" name = "styles.css"  /> 
+   </h:head>
+<h:body>  
+<h2><h:outputText value="Books List"></h:outputText></h2>  
+ <h:form>
+<h:dataTable value="#{bookTable.booksList}" var="book" styleClass = "employeeTable"
+            headerClass = "employeeTableHeader"
+            rowClasses = "employeeTableOddRow,employeeTableEvenRow">  
+<h:column>  
+<f:facet name="header">Book Id</f:facet>  
+ <!-- <h:inputText value = "#{book.bookid}"
+                  size = "10" rendered = "#{book.canEdit}" /> -->
+<h:outputText value="#{book.bookid}" rendered = "#{not book.canEdit}" />    
+</h:column>  
+<h:column>  
+        <f:facet name="header">Book Name</f:facet>  
+        <!--  <h:inputText value = "#{book.bookname}" 
+                  size = "20" rendered = "#{book.canEdit}" /> -->
+        <h:outputText value="#{book.bookname}" rendered = "#{not book.canEdit}" /> 
+</h:column>  
+<h:column>  
+        <f:facet name="header">Book Author</f:facet>  
+       <!--    <h:inputText value = "#{book.author}" 
+                  size = "20" rendered = "#{book.canEdit}" /> -->
+<h:outputText value="#{book.author}" rendered = "#{not book.canEdit}" /> 
+</h:column>  
+<h:column>  
+        <f:facet name="header">Book Price</f:facet>  
+          <!--   <h:inputText value = "#{book.price}" 
+                  size = "20" rendered = "#{book.canEdit}" /> -->
+<h:outputText value="#{book.price}" rendered = "#{not book.canEdit}" /> 
+</h:column>  
+ <h:column>
+               <f:facet name = "header">Action</f:facet>
+               <h:commandButton value = "Edit" 
+                 action ="#{bookTable.editBook}">        
+                 <f:param name="bookid" value="#{book.bookid}"/>
+    <f:param name="bookname" value="#{book.bookname}"/>
+    <f:param name="author" value="#{book.author}"/>
+    <f:param name="price" value="#{book.price}"/>
+               </h:commandButton>
+            </h:column>
+    </h:dataTable>  
+    <h:button value="Back" outcome="login" />
+   
+      </h:form>
+</h:body>  
+</html>

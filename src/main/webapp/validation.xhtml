@@ -1,0 +1,33 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<style>
+.error {color:red}
+</style>
+</h:head>
+<h:body>
+<h:form id="user-form">  
+<!--  <h:messages styleClass="error"></h:messages>  -->
+<h:outputLabel for="username">User Name:</h:outputLabel>  
+<h:inputText id="username" value="#{user.name}" required="true" requiredMessage="Username is required"/>
+<h:message for="username" styleClass="error"></h:message><br></br> 
+
+<h:outputLabel for="mobile">Mobile:</h:outputLabel>  
+<h:inputText id="mobile" value="#{user.mobile}"/>
+<h:message for="mobile" styleClass="error"></h:message><br></br>
+
+
+<h:outputLabel for="password">Password:</h:outputLabel>  
+<h:inputSecret id="password" value="#{user.password}" maxlength="10" size="15"   
+required="true" requiredMessage="Password is required"></h:inputSecret> 
+<h:message for="password" styleClass="error"></h:message> <br></br> 
+<h:outputLabel for="address">address:</h:outputLabel>  
+
+<h:inputTextarea id="address" value="#{user.address}" required="true"  requiredMessage="Address is required" cols="50" rows="10"></h:inputTextarea> 
+<h:message for="address" styleClass="error"></h:message> <br></br> 
+ 
+<h:commandButton id="submit-button" value="Submit" action="response.xhtml"/>  
+</h:form>
+</h:body>
+</html>
