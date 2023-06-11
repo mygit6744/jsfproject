@@ -99,7 +99,7 @@ public class DataTable extends SortableList {
 			   else return "addBook?faces-redirect=true";   
 			   }  
 	public List<Book> getBooksList() {
-		System.out.println("bookList size befor:" + this.bookList.isEmpty());
+		System.out.println("bookList size before:" + this.bookList.isEmpty());
 		 if (!oldSort.equals(sortColumnName) ||
 	                oldAscending != ascending){
 			
