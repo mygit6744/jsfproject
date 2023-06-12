@@ -32,16 +32,16 @@ public class BookDataTable extends SortableList {
 	}
 
 	public List<Book> getBooksList() {
-		System.out.println("bookList size before:" + this.bookList.isEmpty());
-		if (!oldSort.equals(sortColumnName) || oldAscending != ascending) {
-
-			sort();
-			oldSort = sortColumnName;
-			oldAscending = ascending;
-		}
+		
 		if (this.bookList.isEmpty()) {
 			List<Books> booksList = bookService.getBooksList();
 			bookList = Mapper.map(booksList);
+		} else {
+			if (!oldSort.equals(sortColumnName) || oldAscending != ascending) {
+				sort();
+				oldSort = sortColumnName;
+				oldAscending = ascending;
+			}
 		}
 		return bookList;
 	}
@@ -80,43 +80,30 @@ public class BookDataTable extends SortableList {
 
 	@Override
 	protected void sort() {
-		// TODO Auto-generated method stub
-
-		if (this.bookList.isEmpty()) {
-			List<Books> booksList = bookService.getBooksList();
-			this.bookList = Mapper.map(booksList);
-		}
-		if (sortColumnName != null) {
 
 			if (sortColumnName.equals(bookidColumnName)) {
-				System.out.println("ascending: " + ascending);
-
 				Collections.sort(bookList, (p1, p2) -> {
 					return ascending ? p1.getBookid().compareTo(p2.getBookid())
 							: p2.getBookid().compareTo(p1.getBookid());
 				});
 			}
-			if (sortColumnName.equals(booknameColumnName)) {
-				System.out.println("ascending: " + ascending);
+			else if (sortColumnName.equals(booknameColumnName)) {
 				Collections.sort(bookList, (p1, p2) -> {
 					return ascending ? p1.getBookname().toLowerCase().compareTo(p2.getBookname().toLowerCase())
 							: p2.getBookname().toLowerCase().compareTo(p1.getBookname().toLowerCase());
 				});
 			}
-			if (sortColumnName.equals(authorColumnName)) {
-				System.out.println("ascending: " + ascending);
+			else if (sortColumnName.equals(authorColumnName)) {
 				Collections.sort(bookList, (p1, p2) -> {
 					return ascending ? p1.getAuthor().toLowerCase().compareTo(p2.getAuthor().toLowerCase())
 							: p2.getAuthor().toLowerCase().compareTo(p1.getAuthor().toLowerCase());
 				});
 			}
-			if (sortColumnName.equals(priceColumnName)) {
-				System.out.println("ascending:" + ascending);
+			else if (sortColumnName.equals(priceColumnName)) {
 				Collections.sort(bookList, (p1, p2) -> {
 					return ascending ? p1.getPrice().compareTo(p2.getPrice()) : p2.getPrice().compareTo(p1.getPrice());
 				});
 			}
-		}
 
 	}
 
