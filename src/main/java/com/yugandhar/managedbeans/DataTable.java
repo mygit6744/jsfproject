@@ -11,8 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import com.mappers.Mapper;
+import com.yugandhar.dao.BookService;
 import com.yugandhar.dao.DatabaseOperations;
-import com.yugandhar.dao.UserDAO;
 import com.yugandhar.dto.Book;
 import com.yugandhar.dto.SortableList;
 import com.yugandhar.entity.Books;
@@ -63,16 +63,15 @@ public class DataTable extends SortableList {
 	}
 
 
-
-	@ManagedProperty("#{userDAO}")
-	private UserDAO userDAO;
+	@ManagedProperty(value = "#{bookService}")
+	private BookService bookService;
 	
-	public UserDAO getUserDAO() {
-		return userDAO;
+	public BookService getBookService() {
+		return bookService;
 	}
 
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
 	}
 
 	public String editBook() {
@@ -107,13 +106,9 @@ public class DataTable extends SortableList {
 	             oldSort = sortColumnName;
 	             oldAscending = ascending;
 	        }
-		 System.out.println("oldAscending: " + oldAscending);
-		 System.out.println("oldSort: " + oldSort);
-		 System.out.println("ascending: " + ascending);
 		 if(this.bookList.isEmpty()) {
-			 List<Books> booksList = DatabaseOperations.getAllBooks();
+			 List<Books> booksList = bookService.getBooksList();
 				bookList = Mapper.map(booksList);
-				 System.out.println("bookList size inside:" + this.bookList.isEmpty());
 		 }
 		 System.out.println("bookList size after:" + this.bookList.isEmpty());
 		return bookList;
@@ -150,7 +145,7 @@ public class DataTable extends SortableList {
 		// TODO Auto-generated method stub
 		
 		if(this.bookList.isEmpty()) {
-			List<Books> booksList = DatabaseOperations.getAllBooks();
+			List<Books> booksList = bookService.getBooksList();
 			this.bookList = Mapper.map(booksList);
 		}
 		 if (sortColumnName != null) {
