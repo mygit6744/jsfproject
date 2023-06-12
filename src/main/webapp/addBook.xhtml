@@ -14,25 +14,25 @@
                 <h:outputText value="Enter Book Number"/>
                <!--  <h:outputText value="#{request.getParameter('bookid')}" /> -->
 
-                <h:inputText id="bookid" value="#{bookTable.bookid}"/>
+                <h:inputText id="bookid" value="#{addBook.bookid}"/>
                 
 
                 <h:outputText value="Enter Book Name"/>
 
-                <h:inputText id="bookname" value="#{bookTable.bookname}"/>
+                <h:inputText id="bookname" value="#{addBook.bookname}"/>
 
                
 
                 <h:outputText value="Enter Book Author"/>
 
-                <h:inputText id ="author" value="#{bookTable.author}"/>
+                <h:inputText id ="author" value="#{addBook.author}"/>
 
                
  				<h:outputText value="Enter Book Price"/>
 
-                <h:inputText id ="price" value="#{bookTable.price}"/>
+                <h:inputText id ="price" value="#{addBook.price}"/>
 
-                <h:commandButton value="Login" action ="#{bookTable.submit}"/>
+                <h:commandButton value="Login" action ="#{addBook.submit}"/>
 
                 </h:panelGrid>
 

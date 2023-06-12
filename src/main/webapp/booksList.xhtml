@@ -14,7 +14,10 @@
 <h:column>  
 <f:facet name="header">Book Id</f:facet>  
  <!-- <h:inputText value = "#{book.bookid}"
-                  size = "10" rendered = "#{book.canEdit}" /> -->
+                  size = "10" rendered = "#{book.canEdit}" /> 
+                   <f:facet name="header">
+       <h:commandLink action="#{bookTable.sort}"> #{bookTable.bookidColumnname}</h:commandLink>
+    </f:facet>-->
 <h:outputText value="#{book.bookid}" rendered = "#{not book.canEdit}" />    
 </h:column>  
 <h:column>  
@@ -46,7 +49,7 @@
                </h:commandButton>
             </h:column>
     </h:dataTable>  
-    <h:button value="Back" outcome="login" />
+    <h:button value="Back" outcome="addBook" />
    
       </h:form>
 </h:body>  
